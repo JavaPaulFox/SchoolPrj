@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SchoolPrj.Models
 {
-    public class DatabaseContext
+    public class DatabaseContext : IdentityDbContext<ApplicationUser>
     {
+        public DatabaseContext() : base("default") { }
+
+        public static DatabaseContext Create()
+        {
+            return new DatabaseContext();
+        }
     }
 }
