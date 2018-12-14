@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using SchoolPrj.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +13,9 @@ namespace SchoolPrj.Controllers
     {
         public ActionResult Index()
         {
+            DatabaseContext db = new DatabaseContext();
+            db.Roles.Add(new IdentityRole() { Name = "Admin" });
+            db.SaveChangesAsync();
             return View();
         }
 
