@@ -13,9 +13,7 @@ namespace SchoolPrj.Controllers
     {
         public ActionResult Index()
         {
-            DatabaseContext db = new DatabaseContext();
-            db.Roles.Add(new IdentityRole() { Name = "Admin" });
-            db.SaveChangesAsync();
+            
             return View();
         }
 
