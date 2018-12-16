@@ -12,6 +12,7 @@ namespace SchoolPrj.App_Start
         {
             app.CreatePerOwinContext(DatabaseContext.Create);
             app.CreatePerOwinContext<DatabaseManager>(DatabaseManager.Create);
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
         }
     }
 }
