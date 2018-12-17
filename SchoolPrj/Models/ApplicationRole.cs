@@ -9,6 +9,5 @@ namespace SchoolPrj.Models
     public class ApplicationRole : IdentityRole
     {
         public ApplicationRole() { }
-
     }
 }

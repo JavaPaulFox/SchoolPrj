@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
 using Owin;
 using SchoolPrj.Models;
 
@@ -11,8 +12,14 @@ namespace SchoolPrj.App_Start
         public void Configuration(IAppBuilder app)
         {
             app.CreatePerOwinContext(DatabaseContext.Create);
-            app.CreatePerOwinContext<DatabaseManager>(DatabaseManager.Create);
+            app.CreatePerOwinContext<UserDatabaseManager>(UserDatabaseManager.Create);
             app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = "ApplicationCookie",
+                LoginPath = new PathString("/Account/Login"),
+            });
         }
     }
 }

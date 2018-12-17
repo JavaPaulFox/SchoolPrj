@@ -5,14 +5,14 @@ using Microsoft.Owin;
 
 namespace SchoolPrj.Models
 {
-    public class DatabaseManager : UserManager<ApplicationUser>
+    public class UserDatabaseManager : UserManager<ApplicationUser>
     {
-        public DatabaseManager(IUserStore<ApplicationUser> store) : base(store) { }
+        public UserDatabaseManager(IUserStore<ApplicationUser> store) : base(store) { }
 
-        public static DatabaseManager Create (IdentityFactoryOptions<DatabaseManager> options, IOwinContext context)
+        public static UserDatabaseManager Create (IdentityFactoryOptions<UserDatabaseManager> options, IOwinContext context)
         {
             DatabaseContext db = context.Get<DatabaseContext>();
-            DatabaseManager manager = new DatabaseManager(new UserStore<ApplicationUser>(db));
+            UserDatabaseManager manager = new UserDatabaseManager(new UserStore<ApplicationUser>(db));
             return manager;
         }
     }

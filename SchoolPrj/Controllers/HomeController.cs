@@ -1,11 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
+﻿using Microsoft.AspNet.Identity.Owin;
 using SchoolPrj.Models;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -21,12 +16,8 @@ namespace SchoolPrj.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var roleManager = HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
-            var result = await roleManager.RoleExistsAsync("Admin");
-            if (!result)
-            {
-                await roleManager.CreateAsync(new ApplicationRole() { Name = "Admin" });
-            }
+            List<string> list = new List<string>();
+            list.Sort();
             return View();
         }
 
