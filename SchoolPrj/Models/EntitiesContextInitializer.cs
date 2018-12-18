@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace SchoolPrj.Models
 {
@@ -21,6 +20,14 @@ namespace SchoolPrj.Models
                 context.Roles.Add(role);
             }
             context.SaveChanges();
+
+            var store = new UserStore<ApplicationUser>(context);
+            UserDatabaseManager userDatabaseManager = new UserDatabaseManager(store);
+            ApplicationUser admin = new ApplicationUser() { Email = "root@root.com", UserName = "root" };
+            var result = userDatabaseManager.Create(admin, "147753");
+            userDatabaseManager.AddToRole(admin.Id, "Admin");
+            context.SaveChanges();
+            base.Seed(context);
         }
     }
 }

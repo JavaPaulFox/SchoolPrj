@@ -164,7 +164,7 @@
     <Compile Include="Models\ApplicationRoleManager .cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
-    <Compile Include="Models\DatabaseManager.cs" />
+    <Compile Include="Models\UserDatabaseManager.cs" />
     <Compile Include="Models\EntitiesContextInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
