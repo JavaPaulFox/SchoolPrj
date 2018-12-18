@@ -4,10 +4,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using SchoolPrj.Models;
 using SchoolPrj.ViewModel;
-using System;
 using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -77,8 +74,6 @@ namespace SchoolPrj.Controllers
             {
                 return Redirect("/login/signup");
             }
-            
-           
         }
 
         [HttpPost]
@@ -101,8 +96,6 @@ namespace SchoolPrj.Controllers
             {
                 return Redirect("/login");
             }
-
-            
         }
     }
 }

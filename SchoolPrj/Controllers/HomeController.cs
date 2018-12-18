@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNet.Identity.Owin;
-using SchoolPrj.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace SchoolPrj.Controllers
@@ -14,7 +10,7 @@ namespace SchoolPrj.Controllers
             
         }
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             List<string> list = new List<string>();
             list.Sort();
