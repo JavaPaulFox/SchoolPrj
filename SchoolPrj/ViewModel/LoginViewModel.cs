@@ -5,7 +5,6 @@ namespace SchoolPrj.ViewModel
     public class LoginViewModel
     {
         public string Username { get; set; }
-        [Required]
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]

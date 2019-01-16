@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace SchoolPrj.Models
 {
-    public class EntitiesContextInitializer : DropCreateDatabaseAlways<DatabaseContext>
+    public class EntitiesContextInitializer : CreateDatabaseIfNotExists<DatabaseContext>
     {
         protected override void Seed(DatabaseContext context)
         {

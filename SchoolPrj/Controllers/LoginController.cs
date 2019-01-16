@@ -79,8 +79,7 @@ namespace SchoolPrj.Controllers
         [HttpPost]
         public async Task<ActionResult> SignIn(LoginViewModel user)
         {
-            string username = user.Email;
-            ApplicationUser appUser = await UserDatabaseManager.FindAsync(username, user.Password);
+            ApplicationUser appUser = await UserDatabaseManager.FindAsync(user.Username, user.Password);
             if(appUser != null)
             {
                 ClaimsIdentity claim = await UserDatabaseManager.CreateIdentityAsync(appUser,
