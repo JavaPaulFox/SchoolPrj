@@ -39,21 +39,30 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item active">
-                            <span class="nav-link">Hello, @User.Identity.Name</span>
-                        </li>
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item active">
+                                <span class="nav-link">Hello, @User.Identity.Name</span>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+                            </li>
+                        }
                     }
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item active">
-                            <a class="nav-link" href="/login">Add goods<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/goods/add">Add goods<span class="sr-only">(current)</span></a>
                         </li>
                     }
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="#"><img src="~/Content/494-512.png" height="30" width="40"></a>
                     </li>

@@ -154,8 +154,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\GoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +166,8 @@
     <Compile Include="Models\ApplicationRoleManager .cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
+    <Compile Include="Models\Goods.cs" />
+    <Compile Include="Models\GoodsTypes.cs" />
     <Compile Include="Models\UserDatabaseManager.cs" />
     <Compile Include="Models\EntitiesContextInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -243,9 +247,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\SignUp.cshtml" />
+    <Content Include="Views\Goods\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Logout\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

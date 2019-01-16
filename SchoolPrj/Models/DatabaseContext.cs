@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace SchoolPrj.Models
 {
@@ -10,5 +11,8 @@ namespace SchoolPrj.Models
         {
             return new DatabaseContext();
         }
+
+        public DbSet<GoodsTypes> GoodsTypes { get; set; }
+        public DbSet<Goods> Goods { get; set; }
     }
 }
