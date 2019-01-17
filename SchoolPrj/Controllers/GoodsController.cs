@@ -4,6 +4,7 @@ using SchoolPrj.Models;
 using SchoolPrj.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -25,6 +26,15 @@ namespace SchoolPrj.Controllers
         public ActionResult Add()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult GetImage(Guid id)
+        {
+            byte[] image = OwinContext.Get<DatabaseContext>().Goods.FirstOrDefault(x=>x.Id == id).Image;
+            var ms = new MemoryStream(image);
+            var imagex = Image.FromStream(ms);
+            return File(image, "image/jpg");
         }
 
         [HttpPost]
