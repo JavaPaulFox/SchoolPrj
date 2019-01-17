@@ -8,7 +8,13 @@
 <h2>Add new good</h2>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#GoodsType').load('@Url.Action("BookSearch", "Home")?name='+name)
+        var $dropdown = $("#GoodsTypes");
+        $.ajax({
+            url: "/goods/GetGoodsTypes", method: "GET", success: function (result) {
+                result.forEach(function (item, i, arr) {
+                    $dropdown.append($("<option/>").text(item.Name).val(item.Id))
+                })
+  }});
     });
 </script>
 @using (Html.BeginForm()) 
@@ -43,7 +49,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.GoodsTypes, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("GoodsType")
+           <select id="GoodsTypes" name="GoodsTypes"></select>
         </div>
     </div>
 
