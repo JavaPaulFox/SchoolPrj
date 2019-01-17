@@ -4,6 +4,7 @@ using SchoolPrj.Models;
 using SchoolPrj.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,15 +31,19 @@ namespace SchoolPrj.Controllers
         public ActionResult Add(GoodViewModel good)
         {
             GoodsTypes type = OwinContext.Get<DatabaseContext>().GoodsTypes.FirstOrDefault(x => x.Id == new Guid(good.GoodsTypes));
+            BinaryReader b = new BinaryReader(good.Image.InputStream);
+            byte[] image = b.ReadBytes(good.Image.ContentLength);
             OwinContext.Get<DatabaseContext>().Goods.Add(new Goods()
             {
                 Id = Guid.NewGuid(),
                 Title = good.Title,
                 Description = good.Description,
                 Price = good.Price,
-                GoodsTypes = type
+                GoodsTypes = type,
+                ImageName = good.Image.FileName,
+                Image = image
             });
-            OwinContext.Get<DatabaseContext>().SaveChangesAsync();
+            OwinContext.Get<DatabaseContext>().SaveChanges();
             return View();
         }
 
