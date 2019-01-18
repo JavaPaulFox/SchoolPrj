@@ -5,23 +5,33 @@
 }
 
 <div class="container">
-    <div class="card-columns">
-        @for (int i = 0; i < 20; i++)
-        {
-            foreach (var item in Model)
+    <div class="row">
+        <div class="card-columns">
+            @foreach (var item in Model)
             {
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" width="300" height="350" src="@Url.Action("GetImage", "Goods", new { id = item.Id })" alt="Card image cap">
+                    <img class="card-img-top" style="max-height: 350px; max-width:350px" src="@Url.Action("GetImage", "Goods", new { id = item.Id })" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">@item.Title</h5>
                         <p class="card-text">@item.Description</p>
                     </div>
-                    <div class="card-footer text-muted">
-                        <span >@item.Price $</span> <span >@item.Price $</span>
+                    <div class="card-footer">
+                        <span>@item.Price $</span> <span style="margin-left:35%"><button id="addToCart" type="button" good_id="@item.Id" class="btn btn-light">Add to Cart</button></span>
                     </div>
                 </div>
             }
-        }
-
+        </div>
     </div>
 </div>
+<script type="text/javascript">
+    $('body').on("click", "#addToCart" ,function (e) {
+        $.ajax({
+            url: '/Cart/AddToCart',
+            method: 'POST',
+            data: { 'id': e.target.getAttribute("good_id") } ,
+            success: function (data) {
+                $("#countOfCartItems").text(data);
+            }
+        });
+    });
+</script>
