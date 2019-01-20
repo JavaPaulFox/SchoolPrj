@@ -106,5 +106,12 @@ namespace SchoolPrj.Controllers
 
             return true;
         }
+
+        [HttpGet]
+        public bool CleanCart()
+        {
+            Session["cart"] = null;
+            return true;
+        }
     }
 }

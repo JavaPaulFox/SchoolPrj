@@ -40,17 +40,31 @@
 
 <script type="text/javascript">
     $("#orderBtn").on("click", function () {
-        
         $.ajax({
             url: '/Cart/Order',
             method: 'POST',
-                data: {
-                    "Title": 'Order',
-                    "TotalPrice": @total,
-                    "Price": 0,
-                    "CountOfItems": 0
-                },
+            data: {
+                "Title": 'Order',
+                "TotalPrice": @total,
+                "Price": 0,
+                "CountOfItems": 0
+            },
             success: function (data) {
+                if (data) {
+                    $("#removeBtn").trigger("click");
+                }
+            }
+        });
+    });
+
+    $("#removeBtn").on("click", function () {
+        $.ajax({
+            url: '/Cart/CleanCart',
+            method: 'GET',
+            success: function (data) {
+                if (data) {
+                    document.location.href = "/";
+                }
                 
             }
         });
