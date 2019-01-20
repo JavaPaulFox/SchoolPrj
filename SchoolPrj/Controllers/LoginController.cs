@@ -59,7 +59,7 @@ namespace SchoolPrj.Controllers
         {
             if(ModelState.IsValid)
             {
-                ApplicationUser applicationUser = new ApplicationUser() { UserName = user.Email, Address = user.Address, City = user.City, Zip = user.Zip };
+                ApplicationUser applicationUser = new ApplicationUser() { UserName = user.Email, Address = user.Address, City = user.City, Zip = user.Zip, Email = user.Email };
                 var result = await UserDatabaseManager.CreateAsync(applicationUser, user.Password);
                 if(result.Succeeded)
                 {

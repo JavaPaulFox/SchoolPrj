@@ -49,15 +49,28 @@
                     }
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="~/Content/494-512.png" height="30" width="40"></a>
-                        <span id="countOfCartItems"></span>
+                        <a class="nav-link" href="/cart"><img src="~/Content/494-512.png" height="30" width="40"><span id="countOfCartItems"></span></a>
+
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
     @RenderBody()
-   
+
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: '/Cart/GetCountOfItems',
+                method: 'GET',
+                success: function (data) {
+                    $("#countOfCartItems").text(data);
+                }
+            });
+        })
+    
+    </script>
 </body>
 </html>

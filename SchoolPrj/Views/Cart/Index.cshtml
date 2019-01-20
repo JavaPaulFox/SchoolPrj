@@ -1,0 +1,58 @@
+﻿@model List<SchoolPrj.ViewModel.CartViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int total = 0;
+}
+
+<div class="container">
+
+    <ul class="list-group">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    @item.Title
+                    <span class="badge badge-primary badge-pill">Price : @((item.Price * item.CountOfItems).ToString() + " $") </span><span class="badge badge-primary badge-pill">Count : @item.CountOfItems</span>
+                </li>
+
+                total += ((item.Price * item.CountOfItems));
+            }
+
+        }
+        @if (total > 0)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Total Price : @total
+                <span class="badge "><button id="orderBtn" type="button" class="btn btn-primary">Order</button></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                
+                <span class="badge "><button id="removeBtn" type="button" class="btn btn-primary">Remove all items</button></span>
+            </li>
+        }
+
+    </ul>
+
+
+</div>
+
+<script type="text/javascript">
+    $("#orderBtn").on("click", function () {
+        
+        $.ajax({
+            url: '/Cart/Order',
+            method: 'POST',
+                data: {
+                    "Title": 'Order',
+                    "TotalPrice": @total,
+                    "Price": 0,
+                    "CountOfItems": 0
+                },
+            success: function (data) {
+                
+            }
+        });
+    })
+</script>
